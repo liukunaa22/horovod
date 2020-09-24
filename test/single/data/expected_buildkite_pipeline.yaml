@@ -221,7 +221,7 @@ steps:
     queue: cpu
 - wait
 - label: ':pytest: MPI Parallel PyTests (test-cpu-openmpi-py3_6-tf1_15_0-keras2_2_4-torch1_2_0-mxnet1_4_1-pyspark2_3_2)'
-  command: bash -c " cd /horovod/test && (ls -1 parallel/test_*.py | xargs -n 1 \$(cat /mpirun_command) /bin/bash /pytest.sh mpi)"
+  command: bash -c " cd /horovod/test/parallel && (ls -1 test_*.py | xargs -n 1 \$(cat /mpirun_command) /bin/bash /pytest.sh mpi)"
   artifact_paths: "artifacts/**"
   plugins:
   - docker-compose#v3.5.0:
@@ -237,7 +237,7 @@ steps:
   agents:
     queue: cpu
 - label: ':pytest: MPI Single PyTests (test-cpu-openmpi-py3_6-tf1_15_0-keras2_2_4-torch1_2_0-mxnet1_4_1-pyspark2_3_2)'
-  command: bash -c " cd /horovod/test && (ls -1 single/test_*.py | xargs -n 1 /bin/bash /pytest_standalone.sh mpi)"
+  command: bash -c " cd /horovod/test/single && (ls -1 test_*.py | xargs -n 1 /bin/bash /pytest_standalone.sh mpi)"
   artifact_paths: "artifacts/**"
   plugins:
   - docker-compose#v3.5.0:
@@ -541,7 +541,7 @@ steps:
   agents:
     queue: cpu
 - label: ':pytest: Gloo Parallel PyTests (test-cpu-gloo-py3_6-tf1_15_0-keras2_2_4-torch1_2_0-mxnet1_4_1-pyspark2_3_2)'
-  command: bash -c "cd /horovod/test && (ls -1 parallel/test_*.py | xargs -n 1 horovodrun -np 2 -H localhost:2 --gloo /bin/bash /pytest.sh gloo)"
+  command: bash -c "cd /horovod/test/parallel && (ls -1 test_*.py | xargs -n 1 horovodrun -np 2 -H localhost:2 --gloo /bin/bash /pytest.sh gloo)"
   artifact_paths: "artifacts/**"
   plugins:
   - docker-compose#v3.5.0:
@@ -557,7 +557,7 @@ steps:
   agents:
     queue: cpu
 - label: ':pytest: Gloo Single PyTests (test-cpu-gloo-py3_6-tf1_15_0-keras2_2_4-torch1_2_0-mxnet1_4_1-pyspark2_3_2)'
-  command: bash -c "cd /horovod/test && (ls -1 single/test_*.py | xargs -n 1 /bin/bash /pytest_standalone.sh gloo)"
+  command: bash -c "cd /horovod/test/single && (ls -1 test_*.py | xargs -n 1 /bin/bash /pytest_standalone.sh gloo)"
   artifact_paths: "artifacts/**"
   plugins:
   - docker-compose#v3.5.0:
@@ -829,7 +829,7 @@ steps:
   agents:
     queue: cpu
 - label: ':pytest: MPI Parallel PyTests (test-cpu-openmpi-py3_6-tf2_0_0-keras2_2_4-torch1_3_0-mxnet1_4_1-pyspark2_4_7)'
-  command: bash -c " cd /horovod/test && (ls -1 parallel/test_*.py | xargs -n 1 \$(cat /mpirun_command) /bin/bash /pytest.sh mpi)"
+  command: bash -c " cd /horovod/test/parallel && (ls -1 test_*.py | xargs -n 1 \$(cat /mpirun_command) /bin/bash /pytest.sh mpi)"
   artifact_paths: "artifacts/**"
   plugins:
   - docker-compose#v3.5.0:
@@ -845,7 +845,7 @@ steps:
   agents:
     queue: cpu
 - label: ':pytest: MPI Single PyTests (test-cpu-openmpi-py3_6-tf2_0_0-keras2_2_4-torch1_3_0-mxnet1_4_1-pyspark2_4_7)'
-  command: bash -c " cd /horovod/test && (ls -1 single/test_*.py | xargs -n 1 /bin/bash /pytest_standalone.sh mpi)"
+  command: bash -c " cd /horovod/test/single && (ls -1 test_*.py | xargs -n 1 /bin/bash /pytest_standalone.sh mpi)"
   artifact_paths: "artifacts/**"
   plugins:
   - docker-compose#v3.5.0:
@@ -989,7 +989,7 @@ steps:
   agents:
     queue: cpu
 - label: ':pytest: MPI Parallel PyTests (test-cpu-openmpi-py3_6-tf2_1_0-keras2_3_1-torch1_4_0-mxnet1_5_0-pyspark2_4_7)'
-  command: bash -c " cd /horovod/test && (ls -1 parallel/test_*.py | xargs -n 1 \$(cat /mpirun_command) /bin/bash /pytest.sh mpi)"
+  command: bash -c " cd /horovod/test/parallel && (ls -1 test_*.py | xargs -n 1 \$(cat /mpirun_command) /bin/bash /pytest.sh mpi)"
   artifact_paths: "artifacts/**"
   plugins:
   - docker-compose#v3.5.0:
@@ -1005,7 +1005,7 @@ steps:
   agents:
     queue: cpu
 - label: ':pytest: MPI Single PyTests (test-cpu-openmpi-py3_6-tf2_1_0-keras2_3_1-torch1_4_0-mxnet1_5_0-pyspark2_4_7)'
-  command: bash -c " cd /horovod/test && (ls -1 single/test_*.py | xargs -n 1 /bin/bash /pytest_standalone.sh mpi)"
+  command: bash -c " cd /horovod/test/single && (ls -1 test_*.py | xargs -n 1 /bin/bash /pytest_standalone.sh mpi)"
   artifact_paths: "artifacts/**"
   plugins:
   - docker-compose#v3.5.0:
@@ -1149,7 +1149,7 @@ steps:
   agents:
     queue: cpu
 - label: ':pytest: Gloo Parallel PyTests (test-cpu-gloo-py3_7-tf2_2_0-keras2_3_1-torch1_5_0-mxnet1_5_0-pyspark2_4_7)'
-  command: bash -c "cd /horovod/test && (ls -1 parallel/test_*.py | xargs -n 1 horovodrun -np 2 -H localhost:2 --gloo /bin/bash /pytest.sh gloo)"
+  command: bash -c "cd /horovod/test/parallel && (ls -1 test_*.py | xargs -n 1 horovodrun -np 2 -H localhost:2 --gloo /bin/bash /pytest.sh gloo)"
   artifact_paths: "artifacts/**"
   plugins:
   - docker-compose#v3.5.0:
@@ -1165,7 +1165,7 @@ steps:
   agents:
     queue: cpu
 - label: ':pytest: Gloo Single PyTests (test-cpu-gloo-py3_7-tf2_2_0-keras2_3_1-torch1_5_0-mxnet1_5_0-pyspark2_4_7)'
-  command: bash -c "cd /horovod/test && (ls -1 single/test_*.py | xargs -n 1 /bin/bash /pytest_standalone.sh gloo)"
+  command: bash -c "cd /horovod/test/single && (ls -1 test_*.py | xargs -n 1 /bin/bash /pytest_standalone.sh gloo)"
   artifact_paths: "artifacts/**"
   plugins:
   - docker-compose#v3.5.0:
@@ -1357,7 +1357,7 @@ steps:
   agents:
     queue: cpu
 - label: ':pytest: Gloo Parallel PyTests (test-cpu-gloo-py3_8-tf2_3_0-keras2_3_1-torch1_6_0-mxnet1_5_0-pyspark3_0_1)'
-  command: bash -c "cd /horovod/test && (ls -1 parallel/test_*.py | xargs -n 1 horovodrun -np 2 -H localhost:2 --gloo /bin/bash /pytest.sh gloo)"
+  command: bash -c "cd /horovod/test/parallel && (ls -1 test_*.py | xargs -n 1 horovodrun -np 2 -H localhost:2 --gloo /bin/bash /pytest.sh gloo)"
   artifact_paths: "artifacts/**"
   plugins:
   - docker-compose#v3.5.0:
@@ -1373,7 +1373,7 @@ steps:
   agents:
     queue: cpu
 - label: ':pytest: Gloo Single PyTests (test-cpu-gloo-py3_8-tf2_3_0-keras2_3_1-torch1_6_0-mxnet1_5_0-pyspark3_0_1)'
-  command: bash -c "cd /horovod/test && (ls -1 single/test_*.py | xargs -n 1 /bin/bash /pytest_standalone.sh gloo)"
+  command: bash -c "cd /horovod/test/single && (ls -1 test_*.py | xargs -n 1 /bin/bash /pytest_standalone.sh gloo)"
   artifact_paths: "artifacts/**"
   plugins:
   - docker-compose#v3.5.0:
@@ -1565,7 +1565,7 @@ steps:
   agents:
     queue: cpu
 - label: ':pytest: MPI Parallel PyTests (test-cpu-openmpi-py3_6-tfhead-kerashead-torchhead-mxnethead-pyspark2_4_7)'
-  command: bash -c " cd /horovod/test && (ls -1 parallel/test_*.py | xargs -n 1 \$(cat /mpirun_command) /bin/bash /pytest.sh mpi)"
+  command: bash -c " cd /horovod/test/parallel && (ls -1 test_*.py | xargs -n 1 \$(cat /mpirun_command) /bin/bash /pytest.sh mpi)"
   artifact_paths: "artifacts/**"
   plugins:
   - docker-compose#v3.5.0:
@@ -1581,7 +1581,7 @@ steps:
   agents:
     queue: cpu
 - label: ':pytest: MPI Single PyTests (test-cpu-openmpi-py3_6-tfhead-kerashead-torchhead-mxnethead-pyspark2_4_7)'
-  command: bash -c " cd /horovod/test && (ls -1 single/test_*.py | xargs -n 1 /bin/bash /pytest_standalone.sh mpi)"
+  command: bash -c " cd /horovod/test/single && (ls -1 test_*.py | xargs -n 1 /bin/bash /pytest_standalone.sh mpi)"
   artifact_paths: "artifacts/**"
   plugins:
   - docker-compose#v3.5.0:
@@ -1725,7 +1725,7 @@ steps:
   agents:
     queue: cpu
 - label: ':pytest: MPI Parallel PyTests (test-cpu-mpich-py3_6-tf1_15_0-keras2_3_1-torch1_4_0-mxnet1_5_0-pyspark2_4_7)'
-  command: bash -c " cd /horovod/test && (ls -1 parallel/test_*.py | xargs -n 1 \$(cat /mpirun_command) /bin/bash /pytest.sh mpi)"
+  command: bash -c " cd /horovod/test/parallel && (ls -1 test_*.py | xargs -n 1 \$(cat /mpirun_command) /bin/bash /pytest.sh mpi)"
   artifact_paths: "artifacts/**"
   plugins:
   - docker-compose#v3.5.0:
@@ -1741,7 +1741,7 @@ steps:
   agents:
     queue: cpu
 - label: ':pytest: MPI Single PyTests (test-cpu-mpich-py3_6-tf1_15_0-keras2_3_1-torch1_4_0-mxnet1_5_0-pyspark2_4_7)'
-  command: bash -c " cd /horovod/test && (ls -1 single/test_*.py | xargs -n 1 /bin/bash /pytest_standalone.sh mpi)"
+  command: bash -c " cd /horovod/test/single && (ls -1 test_*.py | xargs -n 1 /bin/bash /pytest_standalone.sh mpi)"
   artifact_paths: "artifacts/**"
   plugins:
   - docker-compose#v3.5.0:
@@ -1918,7 +1918,7 @@ steps:
     queue: cpu
 - wait
 - label: ':pytest: MPI Parallel PyTests (test-gpu-openmpi-py3_6-tf1_15_0-keras2_2_4-torch1_3_0-mxnet1_4_1-pyspark2_4_7)'
-  command: bash -c " cd /horovod/test && (ls -1 parallel/test_*.py | xargs -n 1 \$(cat /mpirun_command) /bin/bash /pytest.sh mpi)"
+  command: bash -c " cd /horovod/test/parallel && (ls -1 test_*.py | xargs -n 1 \$(cat /mpirun_command) /bin/bash /pytest.sh mpi)"
   artifact_paths: "artifacts/**"
   plugins:
   - docker-compose#v3.5.0:
@@ -1934,7 +1934,7 @@ steps:
   agents:
     queue: 4x-gpu-g4
 - label: ':pytest: MPI Single PyTests (test-gpu-openmpi-py3_6-tf1_15_0-keras2_2_4-torch1_3_0-mxnet1_4_1-pyspark2_4_7)'
-  command: bash -c " cd /horovod/test && (ls -1 single/test_*.py | xargs -n 1 /bin/bash /pytest_standalone.sh mpi)"
+  command: bash -c " cd /horovod/test/single && (ls -1 test_*.py | xargs -n 1 /bin/bash /pytest_standalone.sh mpi)"
   artifact_paths: "artifacts/**"
   plugins:
   - docker-compose#v3.5.0:
@@ -1966,7 +1966,7 @@ steps:
   agents:
     queue: 4x-gpu-g4
 - label: ':pytest: Gloo Parallel PyTests (test-gpu-gloo-py3_6-tf2_0_0-keras2_3_1-torch1_4_0-mxnet1_4_1-pyspark2_4_7)'
-  command: bash -c "cd /horovod/test && (ls -1 parallel/test_*.py | xargs -n 1 horovodrun -np 2 -H localhost:2 --gloo /bin/bash /pytest.sh gloo)"
+  command: bash -c "cd /horovod/test/parallel && (ls -1 test_*.py | xargs -n 1 horovodrun -np 2 -H localhost:2 --gloo /bin/bash /pytest.sh gloo)"
   artifact_paths: "artifacts/**"
   plugins:
   - docker-compose#v3.5.0:
@@ -1982,7 +1982,7 @@ steps:
   agents:
     queue: 4x-gpu-g4
 - label: ':pytest: Gloo Single PyTests (test-gpu-gloo-py3_6-tf2_0_0-keras2_3_1-torch1_4_0-mxnet1_4_1-pyspark2_4_7)'
-  command: bash -c "cd /horovod/test && (ls -1 single/test_*.py | xargs -n 1 /bin/bash /pytest_standalone.sh gloo)"
+  command: bash -c "cd /horovod/test/single && (ls -1 test_*.py | xargs -n 1 /bin/bash /pytest_standalone.sh gloo)"
   artifact_paths: "artifacts/**"
   plugins:
   - docker-compose#v3.5.0:
@@ -2014,7 +2014,7 @@ steps:
   agents:
     queue: 4x-gpu-g4
 - label: ':pytest: Gloo Parallel PyTests (test-gpu-openmpi-gloo-py3_6-tf2_2_0-keras2_3_1-torch1_5_0-mxnet1_4_1-pyspark2_4_7)'
-  command: bash -c "cd /horovod/test && (ls -1 parallel/test_*.py | xargs -n 1 horovodrun -np 2 -H localhost:2 --gloo /bin/bash /pytest.sh gloo)"
+  command: bash -c "cd /horovod/test/parallel && (ls -1 test_*.py | xargs -n 1 horovodrun -np 2 -H localhost:2 --gloo /bin/bash /pytest.sh gloo)"
   artifact_paths: "artifacts/**"
   plugins:
   - docker-compose#v3.5.0:
@@ -2030,7 +2030,7 @@ steps:
   agents:
     queue: 4x-gpu-g4
 - label: ':pytest: Gloo Single PyTests (test-gpu-openmpi-gloo-py3_6-tf2_2_0-keras2_3_1-torch1_5_0-mxnet1_4_1-pyspark2_4_7)'
-  command: bash -c "cd /horovod/test && (ls -1 single/test_*.py | xargs -n 1 /bin/bash /pytest_standalone.sh gloo)"
+  command: bash -c "cd /horovod/test/single && (ls -1 test_*.py | xargs -n 1 /bin/bash /pytest_standalone.sh gloo)"
   artifact_paths: "artifacts/**"
   plugins:
   - docker-compose#v3.5.0:
@@ -2062,7 +2062,7 @@ steps:
   agents:
     queue: 4x-gpu-g4
 - label: ':pytest: MPI Parallel PyTests (test-gpu-openmpi-gloo-py3_6-tf2_2_0-keras2_3_1-torch1_5_0-mxnet1_4_1-pyspark2_4_7)'
-  command: bash -c " cd /horovod/test && (ls -1 parallel/test_*.py | xargs -n 1 \$(cat /mpirun_command) /bin/bash /pytest.sh mpi)"
+  command: bash -c " cd /horovod/test/parallel && (ls -1 test_*.py | xargs -n 1 \$(cat /mpirun_command) /bin/bash /pytest.sh mpi)"
   artifact_paths: "artifacts/**"
   plugins:
   - docker-compose#v3.5.0:
@@ -2078,7 +2078,7 @@ steps:
   agents:
     queue: 4x-gpu-g4
 - label: ':pytest: MPI Single PyTests (test-gpu-openmpi-gloo-py3_6-tf2_2_0-keras2_3_1-torch1_5_0-mxnet1_4_1-pyspark2_4_7)'
-  command: bash -c " cd /horovod/test && (ls -1 single/test_*.py | xargs -n 1 /bin/bash /pytest_standalone.sh mpi)"
+  command: bash -c " cd /horovod/test/single && (ls -1 test_*.py | xargs -n 1 /bin/bash /pytest_standalone.sh mpi)"
   artifact_paths: "artifacts/**"
   plugins:
   - docker-compose#v3.5.0:
@@ -2110,7 +2110,7 @@ steps:
   agents:
     queue: 4x-gpu-g4
 - label: ':pytest: MPI Parallel PyTests (test-gpu-openmpi-py3_6-tf2_3_0-keras2_3_1-torch1_6_0-mxnet1_6_0-pyspark2_4_7)'
-  command: bash -c " cd /horovod/test && (ls -1 parallel/test_*.py | xargs -n 1 \$(cat /mpirun_command) /bin/bash /pytest.sh mpi)"
+  command: bash -c " cd /horovod/test/parallel && (ls -1 test_*.py | xargs -n 1 \$(cat /mpirun_command) /bin/bash /pytest.sh mpi)"
   artifact_paths: "artifacts/**"
   plugins:
   - docker-compose#v3.5.0:
@@ -2126,7 +2126,7 @@ steps:
   agents:
     queue: 4x-gpu-g4
 - label: ':pytest: MPI Single PyTests (test-gpu-openmpi-py3_6-tf2_3_0-keras2_3_1-torch1_6_0-mxnet1_6_0-pyspark2_4_7)'
-  command: bash -c " cd /horovod/test && (ls -1 single/test_*.py | xargs -n 1 /bin/bash /pytest_standalone.sh mpi)"
+  command: bash -c " cd /horovod/test/single && (ls -1 test_*.py | xargs -n 1 /bin/bash /pytest_standalone.sh mpi)"
   artifact_paths: "artifacts/**"
   plugins:
   - docker-compose#v3.5.0:
@@ -2158,7 +2158,7 @@ steps:
   agents:
     queue: 4x-gpu-g4
 - label: ':pytest: MPI Parallel PyTests (test-gpu-openmpi-py3_6-tfhead-kerashead-torchhead-mxnethead-pyspark2_4_7)'
-  command: bash -c " cd /horovod/test && (ls -1 parallel/test_*.py | xargs -n 1 \$(cat /mpirun_command) /bin/bash /pytest.sh mpi)"
+  command: bash -c " cd /horovod/test/parallel && (ls -1 test_*.py | xargs -n 1 \$(cat /mpirun_command) /bin/bash /pytest.sh mpi)"
   artifact_paths: "artifacts/**"
   plugins:
   - docker-compose#v3.5.0:
@@ -2174,7 +2174,7 @@ steps:
   agents:
     queue: 4x-gpu-g4
 - label: ':pytest: MPI Single PyTests (test-gpu-openmpi-py3_6-tfhead-kerashead-torchhead-mxnethead-pyspark2_4_7)'
-  command: bash -c " cd /horovod/test && (ls -1 single/test_*.py | xargs -n 1 /bin/bash /pytest_standalone.sh mpi)"
+  command: bash -c " cd /horovod/test/single && (ls -1 test_*.py | xargs -n 1 /bin/bash /pytest_standalone.sh mpi)"
   artifact_paths: "artifacts/**"
   plugins:
   - docker-compose#v3.5.0:
@@ -2206,7 +2206,7 @@ steps:
   agents:
     queue: 4x-gpu-g4
 - label: ':pytest: MPI Parallel PyTests (test-mixed-openmpi-py3_6-tf1_15_0-keras2_3_1-torch1_4_0-mxnet1_5_0-pyspark2_4_7)'
-  command: bash -c " cd /horovod/test && (ls -1 parallel/test_*.py | xargs -n 1 \$(cat /mpirun_command) /bin/bash /pytest.sh mpi)"
+  command: bash -c " cd /horovod/test/parallel && (ls -1 test_*.py | xargs -n 1 \$(cat /mpirun_command) /bin/bash /pytest.sh mpi)"
   artifact_paths: "artifacts/**"
   plugins:
   - docker-compose#v3.5.0:
@@ -2222,7 +2222,7 @@ steps:
   agents:
     queue: 4x-gpu-g4
 - label: ':pytest: MPI Single PyTests (test-mixed-openmpi-py3_6-tf1_15_0-keras2_3_1-torch1_4_0-mxnet1_5_0-pyspark2_4_7)'
-  command: bash -c " cd /horovod/test && (ls -1 single/test_*.py | xargs -n 1 /bin/bash /pytest_standalone.sh mpi)"
+  command: bash -c " cd /horovod/test/single && (ls -1 test_*.py | xargs -n 1 /bin/bash /pytest_standalone.sh mpi)"
   artifact_paths: "artifacts/**"
   plugins:
   - docker-compose#v3.5.0:
