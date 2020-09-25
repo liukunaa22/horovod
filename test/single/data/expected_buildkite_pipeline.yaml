@@ -461,7 +461,7 @@ steps:
   agents:
     queue: cpu
 - label: ':spark: Spark PyTests (test-cpu-openmpi-py3_6-tf1_15_0-keras2_2_4-torch1_2_0-mxnet1_4_1-pyspark2_3_2)'
-  command: bash -c "cd /horovod/test/integration && pytest --forked -v --capture=no --continue-on-collection-errors --junit-xml=/artifacts/junit.spark.integration.xml test_spark.py test_spark_keras.py test_spark_torch.py"
+  command: bash -c "cd /horovod/test/integration && (ls -1 test_spark*.py | xargs -n 1 /bin/bash /pytest_standalone.sh spark)"
   artifact_paths: "artifacts/**"
   plugins:
   - docker-compose#v3.5.0:
@@ -749,7 +749,7 @@ steps:
   agents:
     queue: cpu
 - label: ':spark: Spark PyTests (test-cpu-gloo-py3_6-tf1_15_0-keras2_2_4-torch1_2_0-mxnet1_4_1-pyspark2_3_2)'
-  command: bash -c "cd /horovod/test/integration && pytest --forked -v --capture=no --continue-on-collection-errors --junit-xml=/artifacts/junit.spark.integration.xml test_spark.py test_spark_keras.py test_spark_torch.py"
+  command: bash -c "cd /horovod/test/integration && (ls -1 test_spark*.py | xargs -n 1 /bin/bash /pytest_standalone.sh spark)"
   artifact_paths: "artifacts/**"
   plugins:
   - docker-compose#v3.5.0:
